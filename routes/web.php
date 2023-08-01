@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $optionChainIndices = OptionChainIndice::whereDate('time', now())->get();
-    $data = [];
+    $dataCOI = [];
+    $dataOI = [];
 
     foreach ($optionChainIndices as $optionChainIndice) {
         $time = Carbon::parse($optionChainIndice->time)->tz('Asia/Kolkata');
@@ -30,16 +31,22 @@ Route::get('/', function () {
 
         $timeArr = array_map(fn ($item) => (int) $item, $timeArr);
 
-        $item = [
+        $itemCOI = [
             $timeArr,
             $optionChainIndice->changein_open_interest_diff,
+        ];
+
+        $itemOI = [
+            $timeArr,
             $optionChainIndice->open_interest_diff
         ];
 
-        array_push($data, $item);
+        array_push($dataCOI, $itemCOI);
+        array_push($dataOI, $itemOI);
     }
 
-    $jsonData = json_encode($data);
+    $jsonDataCOI = json_encode($dataCOI);
+    $jsonDataOI = json_encode($dataOI);
 
-    return view('welcome', compact('jsonData'));
+    return view('welcome', compact('jsonDataCOI', 'jsonDataOI'));
 });
