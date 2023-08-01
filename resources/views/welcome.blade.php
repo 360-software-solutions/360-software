@@ -8,14 +8,18 @@
         packages: ['corechart', 'line']
     });
 
-    google.charts.setOnLoadCallback(() => drawCurveTypes('COI Diff', 'chart_coi', {!! $jsonDataCOI !!}));
-    google.charts.setOnLoadCallback(() => drawCurveTypes('PCR', 'chart_oi', {!! $jsonDataOI !!}));
+    google.charts.setOnLoadCallback(() => drawCurveTypes(['Total COI PE', 'Total COI CE'], 'chart_coi',
+        {!! $jsonDataCOI !!}));
+    google.charts.setOnLoadCallback(() => drawCurveTypes(['PCR'], 'chart_oi', {!! $jsonDataOI !!}));
 
-    function drawCurveTypes(label, divId, jsonData) {
+    function drawCurveTypes(columns, divId, jsonData) {
         var data = new google.visualization.DataTable();
 
         data.addColumn('timeofday', 'X');
-        data.addColumn('number', label);
+
+        for (let column of columns) {
+            data.addColumn('number', column);
+        }
 
         data.addRows(jsonData);
 

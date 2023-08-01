@@ -17,8 +17,11 @@ return new class extends Migration
             $table->string('symbol');
             $table->dateTime('time');
 
-            $table->decimal('changein_open_interest_diff', 10, 4);
-            $table->decimal('open_interest_diff', 10, 4);
+            $table->decimal('total_changein_open_interest_ce', 10, 4);
+            $table->decimal('total_changein_open_interest_pe', 10, 4);
+
+            $table->decimal('total_open_interest_ce', 10, 4);
+            $table->decimal('total_open_interest_pe', 10, 4);
 
             $table->timestamps();
         });

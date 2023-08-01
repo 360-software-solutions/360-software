@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $optionChainIndices = OptionChainIndice::whereDate('time', now())->get();
+
     $dataCOI = [];
     $dataOI = [];
 
@@ -33,12 +34,13 @@ Route::get('/', function () {
 
         $itemCOI = [
             $timeArr,
-            $optionChainIndice->changein_open_interest_diff,
+            $optionChainIndice->total_changein_open_interest_pe,
+            - ($optionChainIndice->total_changein_open_interest_ce),
         ];
 
         $itemOI = [
             $timeArr,
-            $optionChainIndice->open_interest_diff
+            $optionChainIndice->total_open_interest_pe / $optionChainIndice->total_open_interest_ce,
         ];
 
         array_push($dataCOI, $itemCOI);

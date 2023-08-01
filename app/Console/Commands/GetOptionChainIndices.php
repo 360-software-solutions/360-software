@@ -84,14 +84,13 @@ class GetOptionChainIndices extends Command
             }
         }
 
-        $changeinOpenInterestRatio = $totalChangeinOpenInterestPE - $totalChangeinOpenInterestCE;
-        $openInterestRatio = $totalOpenInterestPE - $totalOpenInterestCE;
-
         OptionChainIndice::create([
             'symbol' => 'NIFTY',
             'time' => Carbon::parse($timestamp, 'Asia/Kolkata')->tz('UTC'),
-            'changein_open_interest_diff' => $changeinOpenInterestRatio,
-            'open_interest_diff' => $openInterestRatio,
+            'total_changein_open_interest_ce' => $totalChangeinOpenInterestCE,
+            'total_changein_open_interest_pe' => $totalChangeinOpenInterestPE,
+            'total_open_interest_ce' => $totalOpenInterestCE,
+            'total_open_interest_pe' => $totalOpenInterestPE,
         ]);
     }
 }

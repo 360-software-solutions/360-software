@@ -12,7 +12,9 @@ class OptionChainIndice extends Model
     protected $fillable = [
         'symbol',
         'time',
-        'changein_open_interest_diff',
-        'open_interest_diff',
+        'total_changein_open_interest_ce',
+        'total_changein_open_interest_pe',
+        'total_open_interest_ce',
+        'total_open_interest_pe',
     ];
 }

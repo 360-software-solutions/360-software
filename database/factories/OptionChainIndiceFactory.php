@@ -26,8 +26,10 @@ class OptionChainIndiceFactory extends Factory
         return [
             'symbol' => 'NIFTY',
             'time' => $time,
-            'changein_open_interest_diff' => fake()->numberBetween(-100, 100),
-            'open_interest_diff' => fake()->numberBetween(-100, 100),
+            'total_changein_open_interest_ce' => fake()->numberBetween(100000, 500000),
+            'total_changein_open_interest_pe' => fake()->numberBetween(100000, 500000),
+            'total_open_interest_ce' => fake()->numberBetween(1000000, 2000000),
+            'total_open_interest_pe' => fake()->numberBetween(1000000, 2000000),
         ];
     }
 }
