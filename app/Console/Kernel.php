@@ -12,7 +12,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('get:option-chain-indices')
+            ->weekdays()
+            ->everyTenMinutes()
+            ->timezone('Asia/Kolkata')
+            ->between('9:00', '15:30');
     }
 
     /**
