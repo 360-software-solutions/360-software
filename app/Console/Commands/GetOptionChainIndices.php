@@ -30,13 +30,21 @@ class GetOptionChainIndices extends Command
     {
         $client = new Client([
             'base_uri' => 'https://nseindia.com',
-            'timeout'  => 5.0, // 5000 milliseconds
+            'timeout'  => 30.0, // 5000 milliseconds
         ]);
 
         $response = $client->request('GET', '/api/option-chain-indices?symbol=NIFTY', [
             'headers' => [
-                'User-Agent' => 'PostmanRuntime/7.31.1',
-                'Accept' => '/',
+                'Host' => 'nseindia.com',
+                'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:82.0) Gecko/20100101 Firefox/82.0',
+                'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Language' => 'en-US,en;q=0.5',
+                'Accept-Encoding' => 'gzip, deflate, br',
+                'DNT' => '1',
+                'Connection' => 'keep-alive',
+                'Upgrade-Insecure-Requests' => '1',
+                'Pragma' => 'no-cache',
+                'Cache-Control' => 'no-cache',
             ],
         ]);
 

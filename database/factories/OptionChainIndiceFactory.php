@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +18,7 @@ class OptionChainIndiceFactory extends Factory
     {
         static $count = 0;
 
-        $time = Carbon::parse('2023-08-01 09:00:00', 'Asia/Kolkata')->tz('UTC')->addMinute(10 * $count)->format('Y-m-d H:i:s');
+        $time = now('Asia/Kolkata')->startOfDay()->tz('UTC')->addHours(9)->addMinute(10 * $count)->format('Y-m-d H:i:s');
 
         $count++;
 

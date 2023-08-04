@@ -14,9 +14,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('get:option-chain-indices')
             ->weekdays()
-            ->everyTenMinutes()
+            ->everyFiveMinutes()
             ->timezone('Asia/Kolkata')
-            ->between('9:00', '15:30');
+            ->between('9:15', '15:30');
     }
 
     /**
@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands(): void
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }

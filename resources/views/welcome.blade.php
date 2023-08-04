@@ -24,6 +24,7 @@
         data.addRows(jsonData);
 
         var options = {
+            height: 450,
             hAxis: {
                 title: 'Time'
             },
